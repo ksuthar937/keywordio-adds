@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router";
+import "./App.css";
+import Home from "./pages/Home";
+import CreateAdds from "./pages/CreateAdds";
+import { Toaster } from "react-hot-toast";
+import Navbar from "./components/Navbar";
+import MediaAd from "./pages/MediaAd";
+import TextAd from "./pages/TextAd";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Toaster />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/createadds" element={<CreateAdds />}></Route>
+        <Route path="/media-ad" element={<MediaAd />}></Route>
+        <Route path="/text-ad" element={<TextAd />}></Route>
+      </Routes>
+    </>
   );
 }
 
