@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import Modal from "../components/Modal";
 
-import styles from "./MediaAd.module.css";
+import styles from "./TextAd.module.css";
 
 const TextAd = () => {
   const navigate = useNavigate();
@@ -26,12 +26,19 @@ const TextAd = () => {
     }));
   };
 
+  useEffect(() => {
+    if (submitted) {
+      const timeoutId = setTimeout(() => {
+        navigate("/createadds");
+      }, 600);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [submitted, navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => {
-      navigate("/createadds");
-    }, 6000);
   };
 
   return (

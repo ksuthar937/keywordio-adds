@@ -1,0 +1,58 @@
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  gap: 5px;
+}
+
+@media (width >= 786px) {
+  .item1 {
+    grid-area: header1;
+  }
+  .item2 {
+    grid-area: header2;
+  }
+  .item3 {
+    grid-area: header3;
+  }
+  .item4 {
+    grid-area: image1;
+  }
+  .item5 {
+    grid-area: image2;
+  }
+  .item6 {
+    grid-area: image3;
+  }
+  .item7 {
+    grid-area: video;
+  }
+  .item8 {
+    grid-area: businessName;
+  }
+  .item9 {
+    grid-area: buttonLable;
+  }
+  .item10 {
+    grid-area: website;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-areas:
+      "header1 header1 header1 header3 header3 header3"
+      "header2 header2 header2 header3 header3 header3"
+      "image1 image1 image2 image2 image3 image3"
+      "video video video video video video"
+      "businessName businessName businessName buttonLable buttonLable buttonLable"
+      "website website website website website website";
+
+    gap: 10px;
+  }
+
+  .btn {
+    justify-content: flex-end;
+  }
+}

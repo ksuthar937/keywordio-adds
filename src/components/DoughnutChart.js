@@ -36,7 +36,7 @@ export default function DoughnutChart({ data }) {
                   ...data.map((el) => ({
                     id: el.id,
                     value: el[metricField],
-                    label: el.campaigns,
+                    label: `${el.campaigns} (${el[metricField]})`,
                   })),
                 ],
               },
