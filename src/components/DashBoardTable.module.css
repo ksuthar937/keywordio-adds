@@ -1,0 +1,9 @@
+.tableOutline {
+  width: auto;
+}
+
+@media (width >= 786px) {
+  .tableOutline {
+    width: 50%;
+  }
+}

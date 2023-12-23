@@ -43,7 +43,7 @@ const MediaAd = () => {
         <Modal />
       ) : (
         <>
-          <Typography variant="h6" align="center" margin={1}>
+          <Typography variant="h6" align="left" margin={1}>
             Create Text & Media Ad
           </Typography>
           <form onSubmit={handleSubmit}>
@@ -312,26 +312,18 @@ const MediaAd = () => {
                   required
                 />
               </Box>
-              <Box
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                margin={4}
-                gap={1}
-                marginBottom={2}
-                className={styles.item11}
+            </div>
+            <div className={styles.btn}>
+              <Button
+                variant="contained"
+                color="warning"
+                onClick={() => navigate("/createadds")}
               >
-                <Button
-                  variant="contained"
-                  color="warning"
-                  onClick={() => navigate("/createadds")}
-                >
-                  Back
-                </Button>
-                <Button variant="contained" color="info" type="submit">
-                  Submit
-                </Button>
-              </Box>
+                Back
+              </Button>
+              <Button variant="contained" color="info" type="submit">
+                Submit
+              </Button>
             </div>
           </form>
         </>

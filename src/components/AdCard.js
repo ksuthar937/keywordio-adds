@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import ControlledCheckbox from "./ControlledCheckbox";
+import Checkbox from "@mui/material/Checkbox";
 
 export default function AdCard({ image, type, checked, handleChange }) {
   return (
@@ -18,7 +18,11 @@ export default function AdCard({ image, type, checked, handleChange }) {
           <Typography gutterBottom variant="h6" component="div">
             {type}
           </Typography>
-          <ControlledCheckbox checked={checked} handleChange={handleChange} />
+          <Checkbox
+            checked={checked}
+            onChange={handleChange}
+            inputProps={{ "aria-label": "controlled" }}
+          />
         </CardContent>
       </CardActionArea>
     </Card>

@@ -1,0 +1,15 @@
+.table {
+  width: auto;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (width >= 786px) {
+  .table {
+    flex-direction: row;
+    margin: 40px;
+    gap: 40px;
+  }
+}

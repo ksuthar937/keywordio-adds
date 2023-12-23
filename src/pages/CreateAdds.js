@@ -46,7 +46,7 @@ const CreateAdds = () => {
           handleChange={handleChangeTextAd}
         />
       </div>
-      <Box display="flex" justifyContent="flex-end" margin={2}>
+      <Box display="flex" justifyContent="center" margin={5}>
         <Button variant="contained" onClick={handleNext}>
           NEXT
         </Button>

@@ -1,3 +1,12 @@
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  gap: 5px;
+}
+
 @media (width >= 786px) {
   .item1 {
     grid-area: header1;
@@ -29,11 +38,6 @@
   .item10 {
     grid-area: website;
   }
-  .item11 {
-    grid-area: btn;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
 
   .gridContainer {
     display: grid;
@@ -43,9 +47,12 @@
       "image1 image1 image2 image2 image3 image3"
       "video video video video video video"
       "businessName businessName businessName buttonLable buttonLable buttonLable"
-      "website website website website website website"
-      "0 0 0 0 0 btn";
+      "website website website website website website";
 
     gap: 10px;
+  }
+
+  .btn {
+    justify-content: flex-end;
   }
 }
