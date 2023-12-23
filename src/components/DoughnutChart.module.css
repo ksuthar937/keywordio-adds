@@ -1,0 +1,9 @@
+.chart {
+  padding: 20px;
+}
+
+@media (width >= 786px) {
+  .chart {
+    padding: 0px;
+  }
+}

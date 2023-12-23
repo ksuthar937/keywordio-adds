@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import DashBoardTable from "../components/DashBoardTable";
 import { Box } from "@mui/material";
+import DashBoardTable from "../components/DashBoardTable";
+
 import Data from "../data.json";
+
 import styles from "./Home.module.css";
 
 const Home = () => {
@@ -15,7 +17,12 @@ const Home = () => {
         data={campaignsData}
         setData={setCampaignsData}
       />
-      <DashBoardTable type="Group" data={groupData} setData={setGroupData} />
+      <DashBoardTable
+        doughnutChart
+        type="Group"
+        data={groupData}
+        setData={setGroupData}
+      />
     </Box>
   );
 };

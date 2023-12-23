@@ -9,16 +9,22 @@ import {
   TableContainer,
   Toolbar,
   Typography,
+  Switch,
+  Paper,
+  Table,
 } from "@mui/material";
 
-import Paper from "@mui/material/Paper";
-
-import Table from "@mui/material/Table";
+import DoughnutChart from "./DoughnutChart";
 
 import styles from "./DashBoardTable.module.css";
 
-const DashBoardTable = ({ data, setData, type }) => {
+const DashBoardTable = ({ data, setData, type, doughnutChart }) => {
   const [sortBy, setSortBy] = useState("ascending");
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   const sortingData = (string) => {
     if (sortBy === "ascending") {
@@ -58,61 +64,80 @@ const DashBoardTable = ({ data, setData, type }) => {
           >
             Ad Insights
           </Typography>
+          {doughnutChart ? (
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              inputProps={{ "aria-label": "controlled" }}
+            />
+          ) : null}
         </Toolbar>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead sx={{ background: "#f8f9fa" }}>
-              <TableRow>
-                <TableCell onClick={(e) => sortingData("campaigns")}>
-                  {type}
-                </TableCell>
-                <TableCell onClick={() => sortingData("clicks")} align="right">
-                  Clicks
-                </TableCell>
-                <TableCell onClick={() => sortingData("cost")} align="right">
-                  Cost
-                </TableCell>
-                <TableCell
-                  onClick={() => sortingData("conversions")}
-                  align="right"
-                >
-                  Conversions
-                </TableCell>
-                <TableCell onClick={() => sortingData("revenue")} align="right">
-                  Revenue
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((element) => (
-                <TableRow key={element.id}>
-                  <TableCell>{element.campaigns}</TableCell>
-                  <TableCell align="right">{element.clicks}</TableCell>
-                  <TableCell align="right">USD {element.cost}</TableCell>
-                  <TableCell align="right">{element.conversions}</TableCell>
-                  <TableCell align="right">USD {element.revenue}</TableCell>
+        {!checked ? (
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead
+                sx={{ background: "#f8f9fa", ":hover": { cursor: "pointer" } }}
+              >
+                <TableRow>
+                  <TableCell onClick={(e) => sortingData("campaigns")}>
+                    {type}
+                  </TableCell>
+                  <TableCell
+                    onClick={() => sortingData("clicks")}
+                    align="right"
+                  >
+                    Clicks
+                  </TableCell>
+                  <TableCell onClick={() => sortingData("cost")} align="right">
+                    Cost
+                  </TableCell>
+                  <TableCell
+                    onClick={() => sortingData("conversions")}
+                    align="right"
+                  >
+                    Conversions
+                  </TableCell>
+                  <TableCell
+                    onClick={() => sortingData("revenue")}
+                    align="right"
+                  >
+                    Revenue
+                  </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter sx={{ background: "#f8f9fa" }}>
-              <TableRow>
-                <TableCell sx={{ fontWeight: "bold" }}>Total</TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="right">
-                  {totalClicks}
-                </TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="right">
-                  USD {totalCost}
-                </TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="right">
-                  {totalCoversion}
-                </TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="right">
-                  USD {totalRevenue}
-                </TableCell>
-              </TableRow>
-            </TableFooter>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {data.map((element) => (
+                  <TableRow key={element.id}>
+                    <TableCell>{element.campaigns}</TableCell>
+                    <TableCell align="right">{element.clicks}</TableCell>
+                    <TableCell align="right">USD {element.cost}</TableCell>
+                    <TableCell align="right">{element.conversions}</TableCell>
+                    <TableCell align="right">USD {element.revenue}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter sx={{ background: "#f8f9fa" }}>
+                <TableRow>
+                  <TableCell sx={{ fontWeight: "bold" }}>Total</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }} align="right">
+                    {totalClicks}
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }} align="right">
+                    USD {totalCost}
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }} align="right">
+                    {totalCoversion}
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }} align="right">
+                    USD {totalRevenue}
+                  </TableCell>
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </TableContainer>
+        ) : doughnutChart ? (
+          <DoughnutChart data={data} />
+        ) : null}
       </Paper>
     </>
   );

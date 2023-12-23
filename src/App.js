@@ -1,11 +1,13 @@
 import { Route, Routes } from "react-router";
-import "./App.css";
+import { Toaster } from "react-hot-toast";
+
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import CreateAdds from "./pages/CreateAdds";
-import { Toaster } from "react-hot-toast";
-import Navbar from "./components/Navbar";
 import MediaAd from "./pages/MediaAd";
 import TextAd from "./pages/TextAd";
+
+import "./App.css";
 
 function App() {
   return (
